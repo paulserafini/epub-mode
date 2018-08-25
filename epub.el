@@ -31,26 +31,27 @@
 
   (sleep-for 10)
 
-  ;; find the .ncx file
-  (setq find-ncx (concat "find " epub-directory " -regex" " .*.ncx"))
-  (setq ncxfile (shell-command-to-string find-ncx))
-  (setq ncxfile (replace-regexp-in-string "\n" "" ncxfile))
+  ;; find the .opf file
+  (setq find-opf (concat "find " epub-directory " -regex" " .*.opf"))
+  (setq opf-file (shell-command-to-string find-opf))
+  (setq opf-file (replace-regexp-in-string "\n" "" opf-file))
 
-  ;; create a file manifest from the ncx file
+  ;; create a file manifest from the opf file
   (setq manifest '())
-  (with-current-buffer (find-file-noselect ncxfile)
+  (with-current-buffer (find-file-noselect opf-file)
     (goto-char (point-min))
-    (while (re-search-forward "src=\".*\"" nil t)
+    (while (re-search-forward "href=\".*?\"" nil t)
       (setq match (match-string-no-properties 0))
-      (setq match (replace-regexp-in-string "src=\"" "" match))
+      (setq match (replace-regexp-in-string "href=\"" "" match))
       (setq match (replace-regexp-in-string "\"$" "" match))
-      (add-to-list 'manifest match)))
-  (setq manifest (reverse manifest))
+      (if (string-match-p ".htm" match)
+	  (add-to-list 'manifest match)))
+    (setq manifest (reverse manifest)))
 
   ;; define some important variables
   (setq number-of-sections (length manifest))
-  (setq current-chapter 0)
-  (setq relative-directory (file-name-directory (directory-file-name ncxfile)))
+  (setq current-chapter 5)
+  (setq relative-directory (file-name-directory (directory-file-name opf-file)))
 
   (epub-open-section))
 

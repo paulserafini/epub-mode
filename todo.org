@@ -1,2 +1,1 @@
  - Wait until the epub is unzipped before proceeding to open the files
- - The manifest file isn't necessary an .ncx, so this will only work for some .epub files
