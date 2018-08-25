@@ -24,10 +24,12 @@
 
   (setq epub-file (read-file-name "Choose an .epub file: "))
 
-  (setq epub-directory "/tmp/epub-mode/")
+  (setq epub-directory (concat "/tmp/epub-mode/" (number-to-string (random 10000))))
 
   ;; extract files
   (start-process "" nil "unzip" epub-file "-d" epub-directory)
+
+  (sleep-for 10)
 
   ;; find the .ncx file
   (setq find-ncx (concat "find " epub-directory " -regex" " .*.ncx"))
@@ -47,7 +49,7 @@
 
   ;; define some important variables
   (setq number-of-sections (length manifest))
-  (setq current-chapter 1)
+  (setq current-chapter 0)
   (setq relative-directory (file-name-directory (directory-file-name ncxfile)))
 
   (epub-open-section))
