@@ -1,1 +1,2 @@
  - Wait until the epub is unzipped before proceeding to open the files
+ - Get rid of "_" at beginning of some lines? It seems to be caused by empty paragraph tags (<p></p>)
