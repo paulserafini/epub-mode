@@ -76,6 +76,7 @@
 (defun epub-mode ()
   "A simple epub reader"
 
+  (start-process "" nil "mkdir" "/tmp/epub-mode/")
   (switch-to-buffer "epub")
   (interactive)
   (kill-all-local-variables)
