@@ -1,0 +1,13 @@
+* epub-mode
+
+This is a major mode for reading EPUB files in Emacs. It uses [[https://github.com/tats/w3m][w3m]] to render the html.
+
+Note: I wrote this as an exercise; see [[https://github.com/wasamasa/nov.el][nov.el]] for a fully-featured reader.
+
+* Installation
+
+To install epub-mode, put epub.el in a directory which is included in your ~load path~, then add the following line to your init file:
+#+BEGIN_EXAMPLE
+(require 'epub)
+#+END_EXAMPLE
+Because it relies on w3m, I expect it will only work on Linux.
