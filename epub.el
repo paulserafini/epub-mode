@@ -2,9 +2,9 @@
 
 (defvar epub-mode-map
   (let ((map (make-keymap)))
-    (define-key map (kbd "M-n") 'epub-next-section)
-    (define-key map (kbd "M-o") 'epub-open-file)
-    (define-key map (kbd "M-p") 'epub-previous-section)
+    (define-key map (kbd "C-c C-n") 'epub-next-section)
+    (define-key map (kbd "C-c C-o") 'epub-open-file)
+    (define-key map (kbd "C-c C-p") 'epub-previous-section)
     map)
   "Keymap for epub")
 
