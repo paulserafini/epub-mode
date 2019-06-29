@@ -13,7 +13,7 @@ To install epub-mode, put epub.el in a directory which is included in your ~load
 Because it relies on w3m, I expect it will only work on Linux.
 * Use
 
-To open an .epub file, enter epub-mode then use ~C-c C-o~-
+To open an .epub file, enter epub-mode then use ~C-c C-o~.
 
 | C-c C-n | Go to the next section     |
 | C-c C-o | Find and open an epub file |
